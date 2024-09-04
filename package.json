@@ -1,0 +1,41 @@
+{
+  "name": "wingbot-mails-gdocs",
+  "version": "1.0.0",
+  "description": "Utility for storing mail templates in google docs",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "npm run test:lint && npm run test:coverage && npm run test:coverage:threshold",
+    "test:unit": "mocha ./test/**/*.js",
+    "test:unit:watch": "npm run test:unit -- --watch",
+    "test:coverage": "nyc --reporter=html mocha ./test && nyc report",
+    "test:coverage:threshold": "nyc check-coverage --lines 70 --functions 80 --branches 20",
+    "test:lint": "eslint ./src/**/*.js ./test/**/*.js "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wingbotai/wingbot-mails-gdocs.git"
+  },
+  "author": "wingbot.ai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wingbotai/wingbot-mails-gdocs/issues"
+  },
+  "homepage": "https://github.com/wingbotai/wingbot-mails-gdocs#readme",
+  "dependencies": {
+    "@googleapis/drive": "^8.14.0",
+    "cheerio": "^1.0.0",
+    "google-auth-library": "^9.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.31.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.27.4",
+    "eslint-plugin-jsdoc": "^39.6.4",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-mocha": "^10.1.0",
+    "eslint-plugin-react": "^7.32.0",
+    "jsdoc-to-markdown": "^8.0.0",
+    "mocha": "^10.2.0",
+    "nyc": "^15.1.0"
+  }
+}
