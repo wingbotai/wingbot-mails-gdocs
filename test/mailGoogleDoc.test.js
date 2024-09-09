@@ -1,6 +1,3 @@
-/*
- * @author David Menger
- */
 'use strict';
 
 // const assert = require('assert');
@@ -8,15 +5,17 @@ const { MailGoogleDoc } = require('../src/main');
 // @ts-ignore
 const googleToken = require('../google-token.json');
 
-describe('<MailsGdocs>', function () {
+const GDOC_ID = 'enter_gdoc_id';
+
+describe('<MailsGdocs>', () => {
 
     describe('#getTestCases()', () => {
 
-        it('works', async () => {
+        it.skip('works', async () => {
 
-            const mailGoogleDoc = new MailGoogleDoc('1kkJfEA5XT0NhDPZpQaGSVKg8r6NlOKoK3LECT-lfAp0', googleToken);
+            const mailGoogleDoc = new MailGoogleDoc(GDOC_ID, googleToken);
 
-            await mailGoogleDoc.getMailData();
+            const { messagePlainText } = await mailGoogleDoc.getMailData('cs');
 
         });
 
