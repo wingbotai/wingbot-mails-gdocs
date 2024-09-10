@@ -74,7 +74,7 @@ class MailGoogleDoc {
         this._htmlToTextConverterOptions = {
             wordwrap: false
         };
-        this._subdirectory = path.join(__dirname, 'mail_templates');
+        this._subdirectory = path.join(process.cwd(), 'mail_templates');
 
         this._filePath = path.join(this._subdirectory, `${this._docId}.html`);
     }
