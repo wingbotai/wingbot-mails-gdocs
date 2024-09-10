@@ -95,7 +95,8 @@ class MailGoogleDoc {
         }
 
         // Save the HTML content to a file
-        fs.writeFile(this._filePath, html, (err) => {
+        // @ts-ignore
+        fs.writeFileSync(this._filePath, html, (err) => {
             if (err) {
                 throw new Error(`Error saving mail template: ${err.message}`);
             }
@@ -119,7 +120,6 @@ class MailGoogleDoc {
         const bcc = this._findValueByKey('Skrytá kopie')?.split(',')?.map((address) => address?.trim()?.toLowerCase());
         const subjectTemplate = this._findValueByKey(`Předmět ${locale}`);
         const messageHtmlTemplate = `${this._findValueByKey(`Zpráva ${locale}`, true)}`;
-        // @ts-ignore
         const subject = Handlebars.compile(subjectTemplate)(dataForHandlebarsTemplating);
         const messageHtml = this.stripStylesExceptFontWeight(
             Handlebars.compile(messageHtmlTemplate)(dataForHandlebarsTemplating)
@@ -171,10 +171,13 @@ class MailGoogleDoc {
      */
     _findValueByKey (key, returnHtml = false, withNewLines = false) {
         let value = null;
+        // eslint-disable-next-line consistent-return
         this._$('table tr').each((index, element) => {
             const firstColumnText = this._$(element).find('td').eq(0).text()
                 .trim();
             const secondColumn = this._$(element).find('td').eq(1);
+
+            // console.log(key, firstColumnText)
 
             if (firstColumnText === key) {
                 if (secondColumn.length > 0) {
