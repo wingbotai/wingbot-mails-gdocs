@@ -51,6 +51,7 @@ Handlebars.registerHelper('gt', (a, b) => a > b);
 
 Handlebars.registerHelper('createLink', (url, text) => new Handlebars.SafeString(`<a href="${url}">${text}</a>`));
 
+Handlebars.registerHelper('smallHtmlTag', (text) => new Handlebars.SafeString(`<small>${text}</small>`));
 class MailGoogleDoc {
 
     /**
